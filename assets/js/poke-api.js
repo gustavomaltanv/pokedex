@@ -9,6 +9,9 @@ pokeApi.getPokemonModel = (pokemonDetail) => {
     pokemon.type = type;
     pokemon.types = types;
     pokemon.sprite = pokemonDetail.sprites.other['official-artwork'].front_default;
+    pokemon.height = pokemonDetail.height;
+    pokemon.weight = pokemonDetail.weight;
+    pokemon.abilities = pokemonDetail.abilities.map((abilitySlot) => abilitySlot.ability.name);
     return pokemon;
 };
 
@@ -29,3 +32,11 @@ pokeApi.getPokemons = (offset, limit) => {
         .catch((err) => console.error(err));
 };
 
+pokeApi.getPokemonByName = (pokemonName) => {
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`;
+    
+    return fetch(url)
+        .then((res) => res.json())
+        .then((pokemon) => pokeApi.getPokemonModel(pokemon))
+        .catch((err) => console.error(err));
+};

@@ -36,6 +36,15 @@
     flex-direction: column;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
+}
+
+.pokemon:hover {
+    filter: brightness(1.1);
+}
+
+.pokemon:active {
+    filter: brightness(.9);
 }
 
 .pokemon::after {
@@ -60,18 +69,17 @@
     background-size: 11rem;
     background-repeat: no-repeat;
     background-position: 145% 2%;
-    opacity: .375;
+    opacity: .15;
     z-index: 1;
-
 }
 
-.pokemon .number, 
+.pokemon .id, 
 .pokemon .name, 
 .pokemon .detail {
     z-index: 3;
 }
 
-.pokemon .number {
+.pokemon .id {
     color: #000;
     text-align: right;
     font-weight: 700;
@@ -110,6 +118,149 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.6rem;
+    z-index: 5;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.popup-content {
+    background-color: #ffcc01;
+    width: 50%;
+    min-width: 300px;
+    max-width: 440px;
+    padding: 1rem;
+    border-radius: 4px;
+    position: relative;
+    border: solid #12366f 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.popup-content::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-image: url("../images/poke-png.png");
+    background-size: 18rem;
+    background-repeat: no-repeat;
+    background-position: 50% 10%;
+    z-index: 1;
+}
+
+.popup-detail {
+    border-radius: 4px;
+    padding: 1rem 2.2rem;
+    border: solid #365fac 2px;
+}
+
+.popup-detail .popup-sprite, .popup-detail .popup-types, .popup-detail .popup-about, hr {
+    margin-bottom: .6rem;
+    position: relative;
+    z-index: 3;
+}
+
+.popup-sprite {
+    width: 100%;
+    text-align: center;
+}
+.popup-sprite img{
+    width: 80%;
+    min-width: 180px;
+    max-width: 240px;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    background-color: #365fac;
+    opacity: .5;
+    border: none;
+}
+
+.popup-subtitle {
+    font-size: .9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.popup-name {
+    font-size: 1.4rem;
+    margin-left: .6rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #12366f;
+}
+.popup-id {
+    position: absolute;
+    right: 2.4rem;
+    top: 1rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .5);
+}
+
+.popup-types ol, .popup-abilities ol{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}
+.popup-types ol{justify-content: center;}
+.popup-abilities ol{
+    justify-content: flex-start;
+    margin-left: .5rem;
+}
+
+
+.popup-type, .popup-ability {
+    text-decoration: none;
+    list-style: none;
+    border: 2px black;
+    border-radius: .75rem;
+    padding: .25rem .5rem;
+    margin: .25rem 0;
+    font-size: .625rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.popup-ability {
+    background-color: rgba(255, 255, 255, .7);
+}
+.popup-type {
+    filter:brightness(0.875);
+}
+
+.popup-about p {
+    font-size: .8rem;
+    font-weight: light;
+    margin-left: 1rem;
+}
+
+.popup-about--info {
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .pagination {
